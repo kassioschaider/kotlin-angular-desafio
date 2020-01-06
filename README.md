@@ -5,7 +5,7 @@
  
 - Trabalhar em um FORK deste repositório em seu usuário;
 - O projeto Web deve utilizar React.js;
-- - O projeto back-end deverá ser desenvolvido em Node.js;
+- O projeto back-end deverá ser desenvolvido em Node.js;
 - O Front-End deve utilizar Material UI: https://material-ui.com;
 - Não usar template completos com os recursos prontos;
 - Os produtos disponíveis no projeto Front-End React devem ser recuperados através da API Rest Back-End Node.js;
@@ -29,7 +29,9 @@
  
 Seu objetivo é montar uma tela para a equipe de produtos importar os arquivos JSON gerados pelo sistema de manufatura da empresa ao novo Dashboard. 
 Nesta tela devemos adicionar um campo do tipo File que somente permite arquivos .json e tem faça a validação dos arquivos anexados antes de serem enviados a REST API. 
-Somente arquivos válidos podem ser enviados ao Dashboard. [Recomendado adicionar alertas de validações]
+Somente arquivos válidos podem ser enviados ao Dashboard. [Recomendado adicionar alertas de validações]. O PO do projeto deixou uma sugestão de mockup:
+
+
  
 #### Listar produtos
  
