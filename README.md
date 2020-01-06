@@ -1,4 +1,4 @@
-## Desafio 02 - Node.js - MondoDB - React.js
+## Desafio 04 - Node.js, MondoDb & React.js
  
  
 ### Obrigatório
@@ -25,6 +25,8 @@
  
 ## Front-End React.js
  
+![Home](assets/images/home.png)
+
 ### Upload de produtos
  
 Seu objetivo é montar uma tela para a equipe de produtos importar os arquivos JSON gerados pelo sistema de manufatura da empresa ao novo Dashboard. 
