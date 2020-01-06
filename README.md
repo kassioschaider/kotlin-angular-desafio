@@ -4,13 +4,13 @@
 ### Obrigatorio
  
 - Trabalhar em um FORK deste repositório em seu usuário;
-- O projeto Web deve utilizar React.
-- O Front-End deve utilizar Material UI: https://material-ui.com
+- O projeto Web deve utilizar React.js;
+- - O projeto back-end deverá ser desenvolvido em Node.js;
+- O Front-End deve utilizar Material UI: https://material-ui.com;
 - Não usar template completos com os recursos prontos;
-- O projeto back-end poderá ser desenvolvido em Node.js.
-- Os produtos disponíveis no projeto front-end devem ser recuperados através da API Rest back-end
+- Os produtos disponíveis no projeto Front-End React devem ser recuperados através da API Rest Back-End Node.js;
  
-## API / Back-End
+## API / Back-End Node.js
  
 - Criar um banco de dados no Mongo Atlas: https://www.mongodb.com/cloud/atlas
 - Criar uma API REST usando Node.js com o seguintes endpoints:
@@ -21,18 +21,19 @@
  - `GET /products/:productId`: Obter a informação somente de um produto da base de dados
  - `GET /products`: Listar todos os produtos da base de dados
 - Integrar a API com o banco de dados MongoDB criado no Atlas para persistir os dados
-- **[Opcional]** Criar os tests unitários para o endpoints
  
  
-## Front-End
+## Front-End React.js
  
 ### Upload de produtos
  
-Seu objetivo é montar um tela para a equipe de produtos importar os arquivos JSON gerados pelo sistema de manufatura da empresa ao novo Dashboard. Nesta tela devemos adicionar um campo do tipo File que somente permite arquivos .json e tem faça a validação dos arquivos anexados antes de serem enviados a REST API, somente arquivos válidos podem ser subidos ao Dashboard. [Recomendado adicionar alertas de validações]
+Seu objetivo é montar uma tela para a equipe de produtos importar os arquivos JSON gerados pelo sistema de manufatura da empresa ao novo Dashboard. 
+Nesta tela devemos adicionar um campo do tipo File que somente permite arquivos .json e tem faça a validação dos arquivos anexados antes de serem enviados a REST API. 
+Somente arquivos válidos podem ser enviados ao Dashboard. [Recomendado adicionar alertas de validações]
  
 #### Listar produtos
  
-Criar um tela com um tabela para listar os produtos processados pela API, é importante ter os seguintes campos:
+Criar uma sessão na tela com uma tabela para listar os produtos processados pela API. É importante ter os seguintes campos:
  
         - Title
         - Type
@@ -43,7 +44,8 @@ Criar um tela com um tabela para listar os produtos processados pela API, é imp
  
 #### Editar produto
  
-Na tela de editar produto, precisamos disponibilizar os formulários com todos os campos dos produtos para que a equipe possa editá-los. Fazer validação de alguns campos obrigatórios:
+Na tabela com os produtos precisamos disponibilizar os formulários com todos os campos dos produtos para que a equipe possa editá-los. 
+Fazer validação de alguns campos obrigatórios:
 
         - Title
         - Type
@@ -52,17 +54,10 @@ Na tela de editar produto, precisamos disponibilizar os formulários com todos o
 #### Remover produto
  
 Antes de completar a ação de remover produto, devemos perguntar ao usuário se ele realmente 
-quer realizar dita ação para evitar a remoção de produtos de maneira indesejada. 
+quer realizar a ação. Para evitar a remoção de produtos de maneira indesejada. 
 Após remover com êxito, notificar o usuário com um alerta de sucesso.
  
-## DevOps [Opcional]
- 
-Depois de um árduo trabalho de desenvolvimento na API e no Front end chegou a hora mais esperada,
-o lançamento do projeto, é uma das partes mais motivadoras verdade? Então, a equipe de administração de
-sistemas precisará dos mínimos detalhes para configurar o projeto em produção,
-por isso é sua responsabilidade documentar todo o fluxo e facilitar a configuração dos dois projetos com
-tecnologias chaves para rodar em ambientes de Cloud Computing. 
- 
+
 ## Readme do Repositório
  
 - Deve conter o título de cada projeto
