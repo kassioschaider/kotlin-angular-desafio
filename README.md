@@ -1,7 +1,7 @@
-## Desafio 02 - Node - React - Next.js
+## Desafio 02 - Node.js - MondoDB - React.js
  
  
-### Obrigatorio
+### Obrigatório
  
 - Trabalhar em um FORK deste repositório em seu usuário;
 - O projeto Web deve utilizar React.js;
