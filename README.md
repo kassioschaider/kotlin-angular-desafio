@@ -1,4 +1,4 @@
-## Desafio 04 - Node.js, MondoDb & React.js
+## Desafio 04 - Node.js, MondoDB & React.js
  
  
 ### Obrigatório
@@ -31,7 +31,7 @@
  
 Seu objetivo é montar uma tela para a equipe de produtos importar os arquivos JSON gerados pelo sistema de manufatura da empresa ao novo Dashboard. 
 Nesta tela devemos adicionar um campo do tipo File que somente permite arquivos .json e tem faça a validação dos arquivos anexados antes de serem enviados a REST API. 
-Somente arquivos válidos podem ser enviados ao Dashboard. [Recomendado adicionar alertas de validações]. O PO do projeto deixou uma sugestão de mockup:
+Somente arquivos válidos podem ser enviados ao Dashboard. [Recomendado adicionar alertas de validações]. O PO do projeto deixou uma sugestão de mockup acima.
 
 
  
