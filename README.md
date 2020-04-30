@@ -1,4 +1,4 @@
-## Desafio 20200330 - Kotlin, MySQL & Angular
+## Desafio 20200330 - Kotlin, MongoDB & Angular
  
  
 ### Obrigatório
@@ -12,7 +12,7 @@
  
 ## API / Back-End Kotlin
  
-- Criar um banco de dados no Free MySQL Hosting: https://www.freemysqlhosting.net/
+- Criar um banco de dados no Mongo Atlas: https://www.mongodb.com/cloud/atlas
 - Criar uma API REST usando Kotlin com o seguintes endpoints:
  - `GET /`: Detalhes da API
  - `POST /products`: O endpoint irá processar o [products.json](products.json) que será enviado pelo Projeto Web
@@ -20,7 +20,7 @@
  - `DELETE /products/:productId`: Remover o produto da base
  - `GET /products/:productId`: Obter a informação somente de um produto da base de dados
  - `GET /products`: Listar todos os produtos da base de dados
-- Integrar a API com o banco de dados MySQL criado no FreeMySQL para persistir os dados
+- Integrar a API com o banco de dados MongoDB criado no Atlas para persistir os dados
  
  
 ## Front-End Angular
