@@ -6,7 +6,7 @@
 - Trabalhar em um FORK deste repositório em seu usuário;
 - O projeto Web deve utilizar Angular 7 ou versão mais recente;
 - O projeto back-end deverá ser desenvolvido em Kotlin usando Spring Boot;
-- O Front-End deve utilizar Material UI: https://material-ui.com;
+- O Front-End pode ser feito usando Material UI: https://material-ui.com;
 - Não usar template completos com os recursos prontos;
 - Os produtos disponíveis no projeto Front-End Angular devem ser recuperados através da API Rest Back-End Kotlin;
  
@@ -65,7 +65,7 @@ Após remover com êxito, notificar o usuário com um alerta de sucesso.
 ## Readme do Repositório
  
 - Deve conter o título de cada projeto
-- Uma descrição de uma frase
+- Uma descrição em uma frase (Headline)
 - Como instalar e usar o projeto (instruções)
  
 
