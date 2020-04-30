@@ -1,19 +1,19 @@
-## Desafio 04 - Node.js, MongoDB & React.js
+## Desafio 20200330 - Kotlin, MySQL & Angular
  
  
 ### Obrigatório
  
 - Trabalhar em um FORK deste repositório em seu usuário;
-- O projeto Web deve utilizar React.js;
-- O projeto back-end deverá ser desenvolvido em Node.js;
+- O projeto Web deve utilizar Angular 7 ou versão mais recente;
+- O projeto back-end deverá ser desenvolvido em Kotlin usando Spring Boot;
 - O Front-End deve utilizar Material UI: https://material-ui.com;
 - Não usar template completos com os recursos prontos;
-- Os produtos disponíveis no projeto Front-End React devem ser recuperados através da API Rest Back-End Node.js;
+- Os produtos disponíveis no projeto Front-End Angular devem ser recuperados através da API Rest Back-End Kotlin;
  
-## API / Back-End Node.js
+## API / Back-End Kotlin
  
-- Criar um banco de dados no Mongo Atlas: https://www.mongodb.com/cloud/atlas
-- Criar uma API REST usando Node.js com o seguintes endpoints:
+- Criar um banco de dados no Free MySQL Hosting: https://www.freemysqlhosting.net/
+- Criar uma API REST usando Kotlin com o seguintes endpoints:
  - `GET /`: Detalhes da API
  - `POST /products`: O endpoint irá processar o [products.json](products.json) que será enviado pelo Projeto Web
  - `PUT /products/:productId`: Será responsável por receber atualizações realizadas no Projeto Web
@@ -23,7 +23,7 @@
 - Integrar a API com o banco de dados MongoDB criado no Atlas para persistir os dados
  
  
-## Front-End React.js
+## Front-End Angular
  
 ![Home](assets/images/home.png)
 
