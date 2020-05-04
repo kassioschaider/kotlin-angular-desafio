@@ -5,5 +5,7 @@ import org.springframework.data.mongodb.repository.MongoRepository
 
 interface ProductRepository : MongoRepository<Product, Int> {
 
-    fun findByproductId(productId: Int): Product?
+    fun deleteByProductId(productId: String)
+
+    fun findByProductId(productId: String): Product?
 }

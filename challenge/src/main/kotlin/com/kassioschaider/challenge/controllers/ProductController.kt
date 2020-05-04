@@ -22,21 +22,42 @@ class ProductController(val productService: ProductService) {
         return productService.findAll()
     }
 
+//    @PostMapping("products")
+//    fun add(@RequestBody productsDTO: List<ProductDTO>,
+//            result: BindingResult): ResponseEntity<Response<List<ProductDTO>>> {
+//        val response: Response<List<ProductDTO>> = Response<List<ProductDTO>>()
+//        validateFile(productsDTO, result)
+//
+//        if (result.hasErrors()) {
+//            for (error in result.allErrors) response.errors.add(error.defaultMessage.toString())
+//            return ResponseEntity.badRequest().body(response)
+//        }
+//
+//        return ResponseEntity.ok(response)
+//    }
     @PostMapping("products")
-    fun add(@RequestBody productsDTO: Array<ProductDTO>,
-            result: BindingResult): ResponseEntity<Response<Array<ProductDTO>>> {
-        val response: Response<Array<ProductDTO>> = Response<Array<ProductDTO>>()
-        validateFile(productsDTO, result)
-
-        if (result.hasErrors()) {
-            for (error in result.allErrors) response.errors.add(error.defaultMessage.toString())
-            return ResponseEntity.badRequest().body(response)
+    fun add(@RequestBody products: List<Product>) {
+        for (product in products) {
+            productService.addProduct(product)
         }
-
-        return ResponseEntity.ok(response)
     }
 
-    private fun validateFile(productsDTO: Array<ProductDTO>, result: BindingResult) {
+    @DeleteMapping("products/{productId}")
+    fun delete(@PathVariable productId: String) {
+        productService.deleteByProductId(productId)
+    }
+
+    @GetMapping("products/{productId}")
+    fun get(@PathVariable productId: String): Product? {
+        return productService.getByProductId(productId)
+    }
+
+    @PutMapping("products/{productId}")
+    fun get(@RequestBody @Valid product: Product, @PathVariable productId: String): Product {
+        return productService.updateProduct(product)
+    }
+
+    private fun validateFile(productsDTO: List<ProductDTO>, result: BindingResult) {
         TODO("Not yet implemented")
     }
 }
