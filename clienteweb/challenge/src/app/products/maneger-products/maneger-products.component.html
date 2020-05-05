@@ -1,0 +1,88 @@
+<table class="table table-bordered table-hover table-sm">
+
+  <thead>
+    <tr>
+      <th scope="col">Title</th>
+      <th scope="col">Type</th>
+      <th scope="col">Rating</th>
+      <th scope="col">Price</th>
+      <th scope="col">Created</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr *ngFor="let product of products">
+      <td>{{product.title}}</td>
+      <td>{{product.type}}</td>
+      <td>{{product.rating}}</td>
+      <td>{{product.price}}</td>
+      <td>{{product.created}}</td>
+      <td>
+        <button mat-button type="button" variant="contained" color="primary"
+          (click)="showModal=openModalSelectedProduct(product)">Edit</button>
+        <button mat-button type="button" variant="contained" color="warn"
+          (click)="showModalDelete=openModalConfirmDelete(product.productId)">Delete</button>
+      </td>
+    </tr>
+  </tbody>
+
+</table>
+
+<div class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" [ngClass]="{'show':showModalDelete}">
+  <div class=" modal-dialog modal-sm">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">
+          Deseja confirmar a exclusão?
+        </h5>
+      </div>
+      <div class="modal-body">
+        <button type="button" class="btn btn-outline-success" (click)="showModalDelete=onDelete()">Sim</button>
+        <button type="button" class="btn btn-outline-secondary" (click)="showModalDelete=closeModal()">Não</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" tabindex="-1" role="dialog" [ngClass]="{'show':showModal}">
+  <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <h4 class="modal-title">Edit Product</h4>
+      </div>
+
+      <div class="modal-body">
+
+        <form class="form-horizontal" [formGroup]="form">
+
+          <div class="form-group">
+            <label for="title">Title</label>
+            <input type="text" class="form-control" id="title" formControlName="title">
+          </div>
+
+          <div class="form-group">
+            <label for="type">Type</label>
+            <input type="text" class="form-control" id="type" formControlName="type">
+          </div>
+
+          <div class="form-group">
+            <label for="price">Price</label>
+            <input type="text" class="form-control" id="price" formControlName="price">
+          </div>
+
+          <div class="form-group">
+            <label for="rating">Rating</label>
+            <input type="text" class="form-control" id="rating" formControlName="rating">
+          </div>
+
+          <button type="submit" class="btn btn-outline-success" (click)="showModal=onUpdate()">Update</button>
+          <button type="button" class="btn btn-outline-secondary" (click)="showModal=closeModal()">Cancelar</button>
+
+        </form>
+
+      </div>
+    </div>
+  </div>
+</div>

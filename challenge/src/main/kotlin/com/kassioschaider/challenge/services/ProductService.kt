@@ -1,6 +1,8 @@
 package com.kassioschaider.challenge.services
 
 import com.kassioschaider.challenge.documents.Product
+import com.kassioschaider.challenge.services.dtos.ProductDTO
+import java.util.stream.Stream
 
 interface ProductService {
 
@@ -8,7 +10,7 @@ interface ProductService {
 
     fun addProduct(product: Product): Product
 
-    fun findAll(): List<Product>
+    fun findAll(): Stream<ProductDTO?>
 
     fun updateProduct(product: Product): Product
 
