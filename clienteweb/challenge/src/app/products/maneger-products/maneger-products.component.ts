@@ -11,12 +11,14 @@ import { HttpErrorResponse } from '@angular/common/http';
 })
 export class ManegerProductsComponent implements OnInit {
 
+  selectedFile: File;
   products: Product[];
   form: FormGroup;
   idProductSelectDelete: string;
   alert: string = '';
   showModalDelete: boolean = false;
   showModal: boolean = false;
+  fileReader = new FileReader();
 
   constructor(
     private productsService: ManegerProductsService,
@@ -43,7 +45,25 @@ export class ManegerProductsComponent implements OnInit {
       .subscribe(dados => { this.products = <Product[]>dados });
   }
 
-  onCreate() { }
+  onFileChanged(event) {
+    this.selectedFile = event.target.files[0];
+    this.fileReader.readAsText(this.selectedFile, "UTF-8");
+  }
+
+  onUpload(file) {
+    this.productsService
+      .upload(file)
+      .subscribe(response => {
+        alert("Products uploaded successful!");
+        this.getProducts();
+      }, (err: HttpErrorResponse) => {
+        err.error.forEach(e => {
+          this.alert = this.alert + e
+        })
+        alert(this.alert);
+        this.alert = '';
+      });
+  }
 
   onUpdate() {
     this.productsService
@@ -51,7 +71,7 @@ export class ManegerProductsComponent implements OnInit {
       .subscribe(response => {
         this.products.push(Object.assign({}, <Product>response));
         this.getProducts();
-        alert("Product " + <Product>response.title + " update successful!");
+        alert("Product " + <Product>response.title + " updated successful!");
         this.form.reset();
       }, (err: HttpErrorResponse) => {
         err.error.forEach(e => {
@@ -67,7 +87,7 @@ export class ManegerProductsComponent implements OnInit {
   onDelete() {
     this.productsService.delete(this.idProductSelectDelete)
       .subscribe();
-    alert("Product delete successful!");
+    alert("Product deleted successful!");
     this.getProducts();
     return false;
   }

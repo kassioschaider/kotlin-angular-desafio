@@ -3,6 +3,7 @@ package com.kassioschaider.challenge.controllers
 import com.kassioschaider.challenge.documents.Product
 import com.kassioschaider.challenge.services.dtos.ProductDTO
 import com.kassioschaider.challenge.services.ProductService
+import org.omg.CORBA.Object
 import org.springframework.validation.BindingResult
 import org.springframework.web.bind.annotation.*
 import java.text.SimpleDateFormat
@@ -35,7 +36,7 @@ class ProductController(val productService: ProductService) {
 //    }
 
     @PostMapping("/products")
-    fun add(@RequestBody products: List<Product>) {
+    fun add(@RequestBody products: List<ProductDTO>) {
         for (product in products) {
             productService.addProduct(product)
         }

@@ -1,3 +1,11 @@
+<div class="progress">
+  <div class="progress-bar progress-bar-striped progress-bar-animated" style="width: 60%"></div>
+</div>
+
+<input style="display: none" type="file" (change)="onFileChanged($event)" #fileInput>
+<button (click)="fileInput.click()">Select File</button>
+<button (click)="onUpload(this.fileReader.result)">Upload!</button>
+
 <table class="table table-bordered table-hover table-sm">
 
   <thead>

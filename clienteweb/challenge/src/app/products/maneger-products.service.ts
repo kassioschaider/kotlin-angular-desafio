@@ -12,7 +12,7 @@ export class ManegerProductsService {
   private resouceUrl = environment.apiUrl + '/products';
   private httpOptions = {
     headers: new HttpHeaders({
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json; charset=utf-8'
     })
   }
 
@@ -24,7 +24,7 @@ export class ManegerProductsService {
 
   get(id: string): Observable<Product> {
     return this.http
-      .get(this.resouceUrl + '/' + JSON.stringify(id), this.httpOptions);
+      .get(this.resouceUrl + '/' + id, this.httpOptions);
   }
 
   delete(id: string) {
@@ -35,5 +35,10 @@ export class ManegerProductsService {
   update(product: Product): Observable<Product> {
     return this.http
       .put(this.resouceUrl + '/' + product.productId, JSON.stringify(product), this.httpOptions);
+  }
+
+  upload(products: Product[]) {
+    return this.http
+      .post(this.resouceUrl + '/', products, this.httpOptions);
   }
 }

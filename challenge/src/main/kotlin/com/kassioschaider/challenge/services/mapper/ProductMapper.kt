@@ -2,6 +2,7 @@ package com.kassioschaider.challenge.services.mapper
 
 import com.kassioschaider.challenge.documents.Product
 import com.kassioschaider.challenge.services.dtos.ProductDTO
+import com.kassioschaider.challenge.services.dtos.ProductListDTO
 
 class ProductMapper {
 
@@ -27,7 +28,23 @@ class ProductMapper {
         return productDTO
     }
 
-    fun convertToModel(productDTO: ProductDTO?): Product? {
+    fun convertToListDto(product: Product?): ProductListDTO? {
+        if (product == null) {
+            return null
+        }
+        val productListDTO = ProductListDTO(
+                product.productId,
+                product.title,
+                product.type,
+                product.price,
+                product.rating,
+                product.created
+        )
+
+        return productListDTO
+    }
+
+    fun convertToModel(productDTO: ProductDTO): Product? {
         if (productDTO == null) {
             return null
         }
