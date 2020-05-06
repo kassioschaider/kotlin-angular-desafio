@@ -4,6 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.context.MessageSource
 import org.springframework.context.i18n.LocaleContextHolder
 import org.springframework.http.HttpStatus
+import org.springframework.http.ResponseEntity
+import org.springframework.http.converter.HttpMessageNotReadableException
 import org.springframework.validation.FieldError
 import org.springframework.web.bind.MethodArgumentNotValidException
 import org.springframework.web.bind.annotation.ExceptionHandler
@@ -11,31 +13,39 @@ import org.springframework.web.bind.annotation.ResponseStatus
 import org.springframework.web.bind.annotation.RestControllerAdvice
 import java.util.*
 import java.util.function.Consumer
+import kotlin.collections.ArrayList
 
 @RestControllerAdvice
 class ErroValidationHandler(private @field:Autowired val messageSource: MessageSource? = null) {
 
     @ResponseStatus(code = HttpStatus.BAD_REQUEST)
     @ExceptionHandler(MethodArgumentNotValidException::class)
-    fun handle(exception: MethodArgumentNotValidException): List<ErrorDTO> {
-        val dtoList: MutableList<ErrorDTO> = ArrayList<ErrorDTO>()
+    fun handleFields(exception: MethodArgumentNotValidException): ArrayList<ErrorDTO> {
+        val dtoList = ArrayList<ErrorDTO>()
         val fieldErrors = exception.bindingResult.fieldErrors
         fieldErrors.forEach(Consumer { e: FieldError ->
-            val mensagem = messageSource!!.getMessage(e, LocaleContextHolder.getLocale())
-            val erro = ErrorDTO(e.field, mensagem)
-            dtoList.add(erro)
+            val message = messageSource!!.getMessage(e, LocaleContextHolder.getLocale())
+            val error = ErrorDTO(fieldToTitle(e.field), message)
+            dtoList.add(error)
         })
+        return dtoList
+    }
+
+    @ResponseStatus(code = HttpStatus.BAD_REQUEST)
+    @ExceptionHandler(HttpMessageNotReadableException::class)
+    fun handlerJson(exception: HttpMessageNotReadableException): ArrayList<ErrorDTO> {
+        val dtoList = ArrayList<ErrorDTO>()
+        val erro = ErrorDTO(fieldToTitle("JSON"), exception.mostSpecificCause.message)
+        dtoList.add(erro)
         return dtoList
     }
 
     private fun fieldToTitle(field: String): String {
         return when (field) {
-            "nome" -> "Nome"
-            "dataNascimento" -> "Data de Nascimento"
-            "cpf" -> "CPF"
-            "idEmpresa" -> "Empresa"
-            "endereco" -> "Endereço"
-            "cnpj" -> "CNPJ"
+            "title" -> "Title"
+            "type" -> "Type"
+            "price" -> "Price"
+            "json" -> "Json"
             else -> field
         }
     }

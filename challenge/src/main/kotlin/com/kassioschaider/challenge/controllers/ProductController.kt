@@ -4,17 +4,17 @@ import com.kassioschaider.challenge.documents.Product
 import com.kassioschaider.challenge.services.dtos.ProductDTO
 import com.kassioschaider.challenge.services.ProductService
 import org.omg.CORBA.Object
+import org.springframework.boot.context.properties.bind.BindResult
 import org.springframework.http.ResponseEntity
 import org.springframework.validation.BindingResult
 import org.springframework.web.bind.annotation.*
 import java.text.SimpleDateFormat
 import java.util.stream.Stream
+import javax.validation.Valid
 
 @RestController
 @RequestMapping("/api")
 class ProductController(val productService: ProductService) {
-
-    private val dateFormat = SimpleDateFormat("yyyy-MM-dd HH:mm:ss")
 
     @GetMapping("/products")
     fun list(): Stream<ProductDTO?> {
@@ -22,8 +22,7 @@ class ProductController(val productService: ProductService) {
     }
 
     @PostMapping("/products")
-    fun add(@RequestBody products: List<ProductDTO>): ResponseEntity<Object> {
-        println(products.toString())
+    fun add(@Valid @RequestBody products: List<ProductDTO>, result: BindingResult): ResponseEntity<Object> {
         for (product in products) {
             productService.addProduct(product)
         }
@@ -41,11 +40,7 @@ class ProductController(val productService: ProductService) {
     }
 
     @PutMapping("/products/{productId}")
-    fun get(@RequestBody product: ProductDTO, @PathVariable productId: String): Product {
+    fun update(@Valid @RequestBody product: ProductDTO): Product {
         return productService.updateProduct(product)
-    }
-
-    private fun validateFile(productsDTO: List<Product>, result: BindingResult) {
-        TODO("Not yet implemented")
     }
 }

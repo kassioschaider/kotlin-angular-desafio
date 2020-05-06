@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
-import { Observable } from 'rxjs';
+import { Observable, throwError } from 'rxjs';
+import { catchError } from 'rxjs/operators'
 import { Product } from './models/product.model';
 
 @Injectable({
@@ -39,6 +40,22 @@ export class ManegerProductsService {
 
   upload(products: Product[]) {
     return this.http
-      .post(this.resouceUrl + '/', products, this.httpOptions);
+      .post(this.resouceUrl + '/', products, this.httpOptions)
+      .pipe(catchError(this.handleError));
+  }
+
+  private handleError(error: HttpErrorResponse) {
+    if (error.error instanceof ErrorEvent) {
+      console.error('An error occurred:', error.error.message);
+    } else {
+      console.error(
+        `Backend returned code ${error.status}, ` +
+        `body was: ${error.error}`);
+      error.error.forEach(element => {
+        alert("Invalid JSON");
+      });
+    }
+    return throwError(
+      'Something bad happened; please try again later.');
   }
 }
