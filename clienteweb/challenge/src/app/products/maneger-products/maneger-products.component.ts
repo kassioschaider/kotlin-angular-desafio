@@ -2,9 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { ManegerProductsService } from '../maneger-products.service';
 import { Product } from '../models/product.model';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { HttpErrorResponse } from '@angular/common/http';
-import { catchError } from 'rxjs/operators'
-import { throwError } from 'rxjs';
 
 @Component({
   selector: 'app-maneger-products',
@@ -73,10 +70,10 @@ export class ManegerProductsComponent implements OnInit {
       .subscribe(response => {
         alert("Products uploaded successful!");
         this.getProducts();
+        this.showProgressBar = false;
+        return;
       });
 
-    this.showProgressBar = false;
-    this.selectedFile = null;
   }
 
   onUpdate() {
