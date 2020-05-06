@@ -17,14 +17,21 @@ No front-end:
 O projeto usa o angular 9.0.1. 
 Na pasta do front-end (clienteweb/challenge), as seguintes instalações devem ser feitas com npm:
 
-npm install -g @angular/cli
-npm install angular
-npm install @material-ui/core
-npm install @material-ui/icons
-npm install --save @angular/material @angular/animations @angular/cdk
-npm install --save angular/material2-builds angular/cdk-builds
-npm install --save hammerjs
-npm install bootstrap@4.1.1
+- npm install -g @angular/cli
+
+- npm install angular
+
+- npm install @material-ui/core
+
+- npm install @material-ui/icons
+
+- npm install --save @angular/material @angular/animations @angular/cdk
+
+- npm install --save angular/material2-builds angular/cdk-builds
+
+- npm install --save hammerjs
+
+- npm install bootstrap@4.1.1
 
 Rodando o projeto:
 

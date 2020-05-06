@@ -10,12 +10,7 @@ import java.time.LocalDateTime
 import java.util.*
 
 @SpringBootApplication
-class ChallengeApplication(val productRepository: ProductRepository) : CommandLineRunner {
-	override fun run(vararg args: String?) {
-		productRepository.deleteAll()
-	}
-
-}
+class ChallengeApplication(val productRepository: ProductRepository)
 
 fun main(args: Array<String>) {
 	runApplication<ChallengeApplication>(*args)
