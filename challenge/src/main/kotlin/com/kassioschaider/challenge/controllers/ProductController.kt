@@ -1,14 +1,12 @@
 package com.kassioschaider.challenge.controllers
 
 import com.kassioschaider.challenge.documents.Product
-import com.kassioschaider.challenge.services.dtos.ProductDTO
 import com.kassioschaider.challenge.services.ProductService
+import com.kassioschaider.challenge.services.dtos.ProductDTO
 import org.omg.CORBA.Object
-import org.springframework.boot.context.properties.bind.BindResult
 import org.springframework.http.ResponseEntity
 import org.springframework.validation.BindingResult
 import org.springframework.web.bind.annotation.*
-import java.text.SimpleDateFormat
 import java.util.stream.Stream
 import javax.validation.Valid
 
