@@ -1,71 +1,56 @@
 ## Desafio 20200330 - Kotlin, MongoDB & Angular
  
- 
-### Obrigatório
- 
-- Trabalhar em um FORK deste repositório em seu usuário;
-- O projeto Web deve utilizar Angular 7 ou versão mais recente;
-- O projeto back-end deverá ser desenvolvido em Kotlin usando Spring Boot;
-- O Front-End pode ser feito usando Material UI: https://material-ui.com;
-- Não usar template completos com os recursos prontos;
-- Os produtos disponíveis no projeto Front-End Angular devem ser recuperados através da API Rest Back-End Kotlin;
+### Descrição (Headline)
+
+API para gerenciar produtos importados por arquivo JSON.
+
+### Como instalar
+
+No back-end:
+
+O projeto foi desenvolvido usando Spring Boot 2.2.6, Java 1.8 e Kotlin 1.3.71 para uma API Rest.
+Importe o back-end da pasta "challenge" para a sua IDE a partir do pom.xml (InteliJ)
+Ou rode "mvn install" para executar a instalação dos pacotes. 
+
+No front-end:
+
+O projeto usa o angular 9.0.1. 
+Na pasta do front-end (clienteweb/challenge), as seguintes instalações devem ser feitas com npm:
+
+npm install -g @angular/cli
+npm install angular
+npm install @material-ui/core
+npm install @material-ui/icons
+npm install --save @angular/material @angular/animations @angular/cdk
+npm install --save angular/material2-builds angular/cdk-builds
+npm install --save hammerjs
+npm install bootstrap@4.1.1
+
+Rodando o projeto:
+
+Execute o "ChallengeApplication.kt" no back-end.
+Execute "npm start" no front-end.
  
 ## API / Back-End Kotlin
  
-- Criar um banco de dados no Mongo Atlas: https://www.mongodb.com/cloud/atlas
-- Criar uma API REST usando Kotlin com o seguintes endpoints:
- - `GET /`: Detalhes da API
- - `POST /products`: O endpoint irá processar o [products.json](products.json) que será enviado pelo Projeto Web
- - `PUT /products/:productId`: Será responsável por receber atualizações realizadas no Projeto Web
- - `DELETE /products/:productId`: Remover o produto da base
- - `GET /products/:productId`: Obter a informação somente de um produto da base de dados
- - `GET /products`: Listar todos os produtos da base de dados
-- Integrar a API com o banco de dados MongoDB criado no Atlas para persistir os dados
- 
- 
-## Front-End Angular
- 
-![Home](assets/images/home.png)
+- Banco de dados no Mongo Atlas
+- A API REST possui os seguintes endpoints:
+ - `GET /`: Home
+ - `POST /products`: O endpoint processa o um arquivo Json para upload de produtos conferindo campos e tipo de arquivo.
+ - `PUT /products/:productId`: A partir do botão Edit é possível atualizar os dados do produto e enviar para a API.
+ - `DELETE /products/:productId`: A partir do botão Delete é possível excluir um produto da base de dados.
+ - `GET /products/:productId`: Esse endpoint retorna um produto específico a partir do id.
+ - `GET /products`: Preenche a tabela com todos os produtos da base de dados.
 
 ### Upload de produtos
  
-Seu objetivo é montar uma tela para a equipe de produtos importar os arquivos JSON gerados pelo sistema de manufatura da empresa ao novo Dashboard. 
-Nesta tela devemos adicionar um campo do tipo File que somente permite arquivos .json e tem faça a validação dos arquivos anexados antes de serem enviados a REST API. 
-Somente arquivos válidos podem ser enviados ao Dashboard. [Recomendado adicionar alertas de validações]. O PO do projeto deixou uma sugestão de mockup acima.
-
-
- 
-#### Listar produtos
- 
-Criar uma sessão na tela com uma tabela para listar os produtos processados pela API. É importante ter os seguintes campos:
- 
-        - Title
-        - Type
-        - Rating
-        - Price
-        - Created (Data do upload do produto a nova base de datos)
-        - Actions (Botões Editar e Excluir)
+Ao fazer o upload dos arquivos o sistema confere o tipo e valida os campos no Json.
  
 #### Editar produto
- 
-Na tabela com os produtos precisamos disponibilizar os formulários com todos os campos dos produtos para que a equipe possa editá-los. 
-Fazer validação de alguns campos obrigatórios:
 
-        - Title
-        - Type
-        - Price
+Os campos Title, Type e Price são obrigatórios e conferidos tanto na API quanto no formulário.
  
 #### Remover produto
  
-Antes de completar a ação de remover produto, devemos perguntar ao usuário se ele realmente 
-quer realizar a ação. Para evitar a remoção de produtos de maneira indesejada. 
-Após remover com êxito, notificar o usuário com um alerta de sucesso.
- 
-
-## Readme do Repositório
- 
-- Deve conter o título de cada projeto
-- Uma descrição em uma frase (Headline)
-- Como instalar e usar o projeto (instruções)
- 
+Ao remover um produto é pedida a confirmação do usuário para a ação.
 
