@@ -39,7 +39,7 @@
       <td>{{product.title}}</td>
       <td>{{product.type}}</td>
       <td>{{product.rating}}</td>
-      <td>{{product.price}}</td>
+      <td>{{product.price | currency:'R$':'symbol':'2.2-2'}}</td>
       <td>{{product.created | date:'dd/MM/yyyy'}}</td>
       <td class="d-flex justify-content-center">
         <button mat-button type="button" variant="contained" color="primary"

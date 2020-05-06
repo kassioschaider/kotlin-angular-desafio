@@ -3,6 +3,7 @@ import { ManegerProductsService } from '../maneger-products.service';
 import { Product } from '../models/product.model';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { HttpErrorResponse } from '@angular/common/http';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-maneger-products',
@@ -38,7 +39,7 @@ export class ManegerProductsComponent implements OnInit {
       filename: [null],
       height: [null],
       width: [null],
-      price: [null, [Validators.required]],
+      price: [null, Validators.required],
       rating: [null],
       created: [null]
     });
