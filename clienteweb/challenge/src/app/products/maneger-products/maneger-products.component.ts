@@ -142,7 +142,7 @@ export class ManegerProductsComponent implements OnInit {
       this.alert = this.alert + 'Type can not be empty and must be between 3 and 50 letters. ';
     }
     if (this.validAndTouched('price')) {
-      this.alert = this.alert + 'Price can not be empty and must be between 3 and 50 letters. ';
+      this.alert = this.alert + 'Price can not be empty!';
     }
 
     return this.validAndTouched('title') || this.validAndTouched('type') || this.validAndTouched('price')

@@ -1,4 +1,4 @@
-<div class="col-sm-12 d-flex justify-content-center">
+<div class="col-sm-12 p-3 d-flex justify-content-center">
   <div class="col-sm-4">
     <div *ngIf="showProgressBar" class="progress">
       <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75"
@@ -15,7 +15,9 @@
     </div>
   </div>
   <div class="col-sm-8 border border-dark rounded text-center">
-    <label>This API is the upload of products!</label>
+    <label>This API is for uploading products via JSON file import.
+      It's also possible to edit the products and delete
+      them from the database.</label>
   </div>
 </div>
 
@@ -86,7 +88,7 @@
                 <div class="col-sm-8">
                   <input type="text" class="form-control" id="title" formControlName="title">
                   <div *ngIf="validAndTouched('title')" class="alert alert-danger" role="alert">
-                    Nome é um campo obigatório e deve conter apenas letras, entre 3 e 50!
+                    Title can not be empty and must be between 3 and 50 letters!
                   </div>
                 </div>
               </div>
@@ -96,7 +98,7 @@
                 <div class="col-sm-8">
                   <input type="text" class="form-control" id="type" formControlName="type">
                   <div *ngIf="validAndTouched('type')" class="alert alert-danger" role="alert">
-                    Nome é um campo obigatório e deve conter apenas letras, entre 3 e 50!
+                    Title can not be empty and must be between 3 and 50 letters!
                   </div>
                 </div>
               </div>
@@ -134,7 +136,7 @@
                 <div class="col-sm-8">
                   <input type="text" class="form-control" id="price" formControlName="price">
                   <div *ngIf="validAndTouched('price')" class="alert alert-danger" role="alert">
-                    Nome é um campo obigatório e deve conter apenas letras, entre 3 e 50!
+                    Price can not be empty!
                   </div>
                 </div>
               </div>
