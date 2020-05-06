@@ -2,7 +2,9 @@ package com.kassioschaider.challenge.documents
 
 import org.springframework.data.annotation.Id
 import org.springframework.data.mongodb.core.mapping.Document
+import java.time.LocalDate
 import java.time.LocalDateTime
+import java.util.*
 
 @Document
 data class Product (
@@ -15,6 +17,6 @@ data class Product (
         val width: Int,
         val price: Float,
         val rating: Int,
-        val created: LocalDateTime?
+        val created: LocalDate?
 ) {
 }

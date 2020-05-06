@@ -4,11 +4,11 @@ import com.kassioschaider.challenge.documents.Product
 import com.kassioschaider.challenge.services.dtos.ProductDTO
 import com.kassioschaider.challenge.services.ProductService
 import org.omg.CORBA.Object
+import org.springframework.http.ResponseEntity
 import org.springframework.validation.BindingResult
 import org.springframework.web.bind.annotation.*
 import java.text.SimpleDateFormat
 import java.util.stream.Stream
-import javax.validation.Valid
 
 @RestController
 @RequestMapping("/api")
@@ -21,25 +21,13 @@ class ProductController(val productService: ProductService) {
         return productService.findAll()
     }
 
-//    @PostMapping("products")
-//    fun add(@RequestBody productsDTO: List<ProductDTO>,
-//            result: BindingResult): ResponseEntity<Response<List<ProductDTO>>> {
-//        val response: Response<List<ProductDTO>> = Response<List<ProductDTO>>()
-//        validateFile(productsDTO, result)
-//
-//        if (result.hasErrors()) {
-//            for (error in result.allErrors) response.errors.add(error.defaultMessage.toString())
-//            return ResponseEntity.badRequest().body(response)
-//        }
-//
-//        return ResponseEntity.ok(response)
-//    }
-
     @PostMapping("/products")
-    fun add(@RequestBody products: List<ProductDTO>) {
+    fun add(@RequestBody products: List<ProductDTO>): ResponseEntity<Object> {
+        println(products.toString())
         for (product in products) {
             productService.addProduct(product)
         }
+        return ResponseEntity.ok().build()
     }
 
     @DeleteMapping("/products/{productId}")
@@ -53,7 +41,7 @@ class ProductController(val productService: ProductService) {
     }
 
     @PutMapping("/products/{productId}")
-    fun get(@RequestBody @Valid product: Product, @PathVariable productId: String): Product {
+    fun get(@RequestBody product: ProductDTO, @PathVariable productId: String): Product {
         return productService.updateProduct(product)
     }
 

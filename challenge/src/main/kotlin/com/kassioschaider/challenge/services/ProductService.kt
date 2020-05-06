@@ -2,7 +2,6 @@ package com.kassioschaider.challenge.services
 
 import com.kassioschaider.challenge.documents.Product
 import com.kassioschaider.challenge.services.dtos.ProductDTO
-import com.kassioschaider.challenge.services.dtos.ProductListDTO
 import java.util.stream.Stream
 
 interface ProductService {
@@ -13,7 +12,7 @@ interface ProductService {
 
     fun findAll(): Stream<ProductDTO?>
 
-    fun updateProduct(product: Product): Product
+    fun updateProduct(product: ProductDTO): Product
 
     fun deleteByProductId(productId: String)
 }

@@ -1,10 +1,23 @@
-<div class="progress">
-  <div class="progress-bar progress-bar-striped progress-bar-animated" style="width: 60%"></div>
-</div>
+<div class="col-sm-12 d-flex justify-content-center">
+  <div class="col-sm-4">
+    <div *ngIf="showProgressBar" class="progress">
+      <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75"
+        aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div>
+    </div>
 
-<input style="display: none" type="file" (change)="onFileChanged($event)" #fileInput>
-<button (click)="fileInput.click()">Select File</button>
-<button (click)="onUpload(this.fileReader.result)">Upload!</button>
+    <div *ngIf="selectedFile">
+      <label>{{ selectedFile.name }}</label>
+    </div>
+    <div>
+      <input style="display: none" type="file" (change)="onFileChanged($event)" #fileInput>
+      <button (click)="fileInput.click()" class="btn btn-outline-secondary">Select JSON File</button>
+      <button (click)="onUpload(this.fileReader.result)" class="btn btn-outline-success">Upload!</button>
+    </div>
+  </div>
+  <div class="col-sm-8 border border-dark rounded text-center">
+    <label>This API is the upload of products!</label>
+  </div>
+</div>
 
 <table class="table table-bordered table-hover table-sm">
 
@@ -25,8 +38,8 @@
       <td>{{product.type}}</td>
       <td>{{product.rating}}</td>
       <td>{{product.price}}</td>
-      <td>{{product.created}}</td>
-      <td>
+      <td>{{product.created | date:'dd/MM/yyyy'}}</td>
+      <td class="d-flex justify-content-center">
         <button mat-button type="button" variant="contained" color="primary"
           (click)="showModal=openModalSelectedProduct(product)">Edit</button>
         <button mat-button type="button" variant="contained" color="warn"
@@ -37,7 +50,8 @@
 
 </table>
 
-<div class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" [ngClass]="{'show':showModalDelete}">
+<div class="modal fade bd-example-modal-sm border border-primary" tabindex="-1" role="dialog"
+  [ngClass]="{'show':showModalDelete}">
   <div class=" modal-dialog modal-sm">
     <div class="modal-content">
       <div class="modal-header">
@@ -54,7 +68,7 @@
 </div>
 
 <div class="modal fade" tabindex="-1" role="dialog" [ngClass]="{'show':showModal}">
-  <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+  <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
 
       <div class="modal-header">
@@ -65,29 +79,87 @@
 
         <form class="form-horizontal" [formGroup]="form">
 
-          <div class="form-group">
-            <label for="title">Title</label>
-            <input type="text" class="form-control" id="title" formControlName="title">
+          <div class="form-group row">
+            <div class="col-sm-8">
+              <div class="form-group row">
+                <label for="title" class="col-sm-4 col-form-label">Title</label>
+                <div class="col-sm-8">
+                  <input type="text" class="form-control" id="title" formControlName="title">
+                  <div *ngIf="validAndTouched('title')" class="alert alert-danger" role="alert">
+                    Nome é um campo obigatório e deve conter apenas letras, entre 3 e 50!
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-group row">
+                <label for="type" class="col-sm-4 col-form-label">Type</label>
+                <div class="col-sm-8">
+                  <input type="text" class="form-control" id="type" formControlName="type">
+                  <div *ngIf="validAndTouched('type')" class="alert alert-danger" role="alert">
+                    Nome é um campo obigatório e deve conter apenas letras, entre 3 e 50!
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-group row">
+                <label for="description" class="col-sm-4 col-form-label">Description</label>
+                <div class="col-sm-8">
+                  <textarea type="text" class="form-control" id="description" formControlName="description"></textarea>
+                </div>
+              </div>
+
+              <div class="form-group row">
+                <label for="filename" class="col-sm-4 col-form-label">File Name</label>
+                <div class="col-sm-8">
+                  <input type="text" class="form-control" id="filename" formControlName="filename">
+                </div>
+              </div>
+
+              <div class="form-group row">
+                <label for="height" class="col-sm-4 col-form-label">Height</label>
+                <div class="col-sm-8">
+                  <input type="text" class="form-control" id="height" formControlName="height">
+                </div>
+              </div>
+
+              <div class="form-group row">
+                <label for="width" class="col-sm-4 col-form-label">Width</label>
+                <div class="col-sm-8">
+                  <input type="text" class="form-control" id="width" formControlName="width">
+                </div>
+              </div>
+
+              <div class="form-group row">
+                <label for="price" class="col-sm-4 col-form-label">Price</label>
+                <div class="col-sm-8">
+                  <input type="text" class="form-control" id="price" formControlName="price">
+                  <div *ngIf="validAndTouched('price')" class="alert alert-danger" role="alert">
+                    Nome é um campo obigatório e deve conter apenas letras, entre 3 e 50!
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-group row">
+                <label for="rating" class="col-sm-4 col-form-label">Rating</label>
+                <div class="col-sm-8">
+                  <input type="text" class="form-control" id="rating" formControlName="rating">
+                </div>
+              </div>
+
+            </div>
+
+            <div class="col-sm-4">
+              <div>
+                <img [src]="imageFileProductSelected" alt="imagem" class="p-3 img-fluid">
+              </div>
+              <div>
+                <button type="submit" class="btn btn-outline-success" (click)="showModal=onUpdate()">Update</button>
+                <button type="button" class="btn btn-outline-secondary"
+                  (click)="showModal=closeModal()">Cancelar</button>
+              </div>
+            </div>
+
           </div>
-
-          <div class="form-group">
-            <label for="type">Type</label>
-            <input type="text" class="form-control" id="type" formControlName="type">
-          </div>
-
-          <div class="form-group">
-            <label for="price">Price</label>
-            <input type="text" class="form-control" id="price" formControlName="price">
-          </div>
-
-          <div class="form-group">
-            <label for="rating">Rating</label>
-            <input type="text" class="form-control" id="rating" formControlName="rating">
-          </div>
-
-          <button type="submit" class="btn btn-outline-success" (click)="showModal=onUpdate()">Update</button>
-          <button type="button" class="btn btn-outline-secondary" (click)="showModal=closeModal()">Cancelar</button>
-
         </form>
 
       </div>

@@ -5,3 +5,12 @@
 .modal.show {
   display: block;
 }
+
+th, td {
+  text-align: center;
+}
+
+th {
+  font-weight: bold;
+  background-color: darkgray;
+}
