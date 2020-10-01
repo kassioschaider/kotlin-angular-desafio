@@ -42,12 +42,12 @@ Execute "npm start" no front-end.
  
 - Banco de dados no Mongo Atlas
 - A API REST possui os seguintes endpoints:
- - `GET /`: Home
- - `POST /products`: O endpoint processa o um arquivo Json para upload de produtos conferindo campos e tipo de arquivo.
- - `PUT /products/:productId`: A partir do botão Edit é possível atualizar os dados do produto e enviar para a API.
- - `DELETE /products/:productId`: A partir do botão Delete é possível excluir um produto da base de dados.
- - `GET /products/:productId`: Esse endpoint retorna um produto específico a partir do id.
- - `GET /products`: Preenche a tabela com todos os produtos da base de dados.
+ - `GET /`: Home Page do Site
+ - `POST /api/products`: O endpoint processa o um arquivo Json para upload de produtos conferindo campos e tipo de arquivo.
+ - `PUT /api/products/:productId`: A partir do botão Edit é possível atualizar os dados do produto e enviar para a API.
+ - `DELETE /api/products/:productId`: A partir do botão Delete é possível excluir um produto da base de dados.
+ - `GET /api/products/:productId`: Esse endpoint retorna um produto específico a partir do id.
+ - `GET /api/products`: Preenche a tabela com todos os produtos da base de dados.
 
 ### Upload de produtos
  
