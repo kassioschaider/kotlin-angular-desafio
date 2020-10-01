@@ -3,7 +3,6 @@ package com.kassioschaider.challenge.controllers
 import com.kassioschaider.challenge.documents.Product
 import com.kassioschaider.challenge.services.ProductService
 import com.kassioschaider.challenge.services.dtos.ProductDTO
-import org.omg.CORBA.Object
 import org.springframework.http.ResponseEntity
 import org.springframework.validation.BindingResult
 import org.springframework.web.bind.annotation.*
